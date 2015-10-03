@@ -53,9 +53,4 @@
               (<= (lower-bound y) 0))
          (make-interval (* (upper-bound x) (upper-bound y)) (* (lower-bound x) (lower-bound y))))))
 
-(define (make-center-delta c d)
-  (let ((w (* (/ d 100) (abs c))))
-    (make-interval (- c w) (+ c w))))
-
-(provide multiply-intervals
-         make-center-delta)
+(provide multiply-intervals)

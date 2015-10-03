@@ -22,9 +22,3 @@
 (check-equal? (multiply-intervals c a) (mul-interval c a) "(-2; -1) * (1; 2)")
 (check-equal? (multiply-intervals c b) (mul-interval c b) "(-2; -1) * (-1; 2)")
 (check-equal? (multiply-intervals c c) (mul-interval c c) "(-2; -1) * (-2; -1)")
-
-; new interval constructor tests
-
-(check-equal? (make-center-delta 4 50) (make-interval 2 6) "constructing of (2; 6) failed")
-(check-equal? (make-center-delta 2 50) (make-interval 1 3) "constructing of (1; 3) failed")
-(check-equal? (make-center-delta -4 50) (make-interval -6 -2) "constructing of (-6; -2) failed")
