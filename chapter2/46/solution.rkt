@@ -1,13 +1,6 @@
 #lang racket
 
-(define (make-vect x y)
-  (cons x y))
-
-(define (xcor-vect v)
-  (car v))
-
-(define (ycor-vect v)
-  (cdr v))
+(require "../other/vectors/vectors.rkt")
 
 (define (add-vect v1 v2)
   (make-vect (+ (xcor-vect v1) (xcor-vect v2))
@@ -21,9 +14,6 @@
   (make-vect (* s (xcor-vect v))
 	     (* s (ycor-vect v))))
 
-(provide make-vect
-	 xcor-vect
-	 ycor-vect
-	 add-vect
+(provide add-vect
 	 sub-vect
 	 scale-vect)

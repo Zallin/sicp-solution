@@ -1,12 +1,8 @@
 #lang racket
 
 (require rackunit
+	 "../other/vectors/vectors.rkt"
 	 "./solution.rkt")
-
-(define v (make-vect 1 2))
-
-(check-equal? (xcor-vect v) 1 "vector representation test failed")
-(check-equal? (ycor-vect v) 2 "vector representation test failed")
 
 (define first (make-vect 1 1))
 (define second (make-vect -2 3))
