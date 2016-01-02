@@ -34,6 +34,19 @@
             (weight-leaf tree)
 	          (cadddr tree)))
 
+(define (adjoin-set x seq)
+  (cond ((null? seq) (list x))
+	((< (weight x) (weight (car seq))) (cons x seq))
+	(else (cons (car seq)
+		    (adjoin-set x (cdr seq))))))
+
+(define (make-leaf-set pairs)
+  (if (null? pairs) 
+    '()
+    (let ((pair (car pairs)))
+      (adjoin-set (make-leaf (car pair) (cadr pair))
+		  (make-leaf-set (cdr pairs))))))
+
 (provide make-leaf
 	 leaf?
 	 symbol-leaf
@@ -42,4 +55,6 @@
 	 left-branch
 	 right-branch
 	 symbols
-	 weight)
+	 weight
+	 adjoin-set
+	 make-leaf-set)

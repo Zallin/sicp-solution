@@ -18,5 +18,11 @@
 (check-equal? (symbols tree) '(A B) "symbols selector test failed")
 (check-equal? (weight tree) 17 "weight selector test failed")
 	      
+(define leafs (list (list 'B 10) (list 'A 7)))
+
+(define leaf-set (make-leaf-set leafs))
+
+(check-equal? (car leaf-set) (make-leaf 'A 7) "make-leaf-set test failed")
+(check-equal? (cadr leaf-set) (make-leaf 'B 10) "make-leaf-set test failed")
 
 
