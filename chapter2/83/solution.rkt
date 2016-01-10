@@ -25,12 +25,9 @@
 (put 'raise '(real) real->complex)
 
 ; generic procedure
-; assuming highest-type predicate implements check whether a type has supertype or not
-; this is done in order to prevent infinite cycle 
-; raise -> apply-generic (has no operation for the highest type and tries to raise it) -> raise -> ...
-; however it is unclear if an error or the type itself should be returned in this case from raise proc
 
 (define (raise type)
-  (if (highest-type? type)
-    type
-    (apply-generic 'raise type)))
+  (let ((proc (get 'raise (type-tag type))))
+    (if proc 
+      (proc type)
+      type)))
