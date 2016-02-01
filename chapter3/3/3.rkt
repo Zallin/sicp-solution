@@ -1,0 +1,20 @@
+#lang racket
+
+(define (make-account balance password)
+  (define (wrong-password val) "wrong password")
+  (define (withdraw amount)
+    (if (>= balance amount)
+      (begin (set! balance (- balance amount))
+	     balance)
+      "not enough money to withdraw"))
+  (define (deposit amount)
+    (set! balance (+ balance amount))
+    balance)
+  (define (dispatch pass op)
+    (cond ((not (eq? password pass)) wrong-password)
+	  ((eq? op 'withdraw) withdraw)
+	  ((eq? op 'deposit) deposit)
+	  (else "Unknown operation")))
+  dispatch)
+
+(provide make-account)
